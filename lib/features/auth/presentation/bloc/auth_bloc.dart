@@ -56,6 +56,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     response.fold((l) => emit(AuthFailure(message: l.message)), (r) {
       storageService.saveJwtToken(r.jwtToken);
+      storageService.saveUserData(
+        id: r.user.userId,
+        name: r.user.name,
+        email: r.user.email,
+        role: r.user.role,
+      );
       emit(AuthLoginSuccess(message: r.message));
     });
   }
