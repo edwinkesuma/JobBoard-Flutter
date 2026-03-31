@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../../core/constants/app_color.dart';
 import '../../../../../core/constants/app_dimensions.dart';
@@ -36,47 +37,85 @@ class LargeLoginPage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
               ),
               const SizedBox(height: 30),
-              GradientBorderContainer(
-                padding: const EdgeInsets.all(3), // ketebalan border
-                borderRadius: BorderRadius.circular(16),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 40),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    // border: Border.all(color: AppColor.borderColor, width: 2),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    children: [
-                      JobBoardTextField(
-                        hintText: 'Email',
-                        controller: emailController,
-                      ),
-                      const SizedBox(height: 15),
-                      JobBoardTextField(
-                        hintText: 'Password',
-                        controller: passwordController,
-                      ),
-                      const SizedBox(height: 20),
-                      GradientButton(onPressed: onPressed, label: "Sign In"),
-                      const SizedBox(height: 20),
-                      RichText(
-                        text: TextSpan(
-                          text: "Don't have an account yet?",
-                          children: [
-                            TextSpan(
-                              text: " Register",
-                              style: TextStyle(color: AppColor.gradient2),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  context.goNamed("register");
-                                },
-                            ),
-                          ],
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(maxWidth: 300),
+                          child: Lottie.asset(
+                            'assets/auth/auth_person.json',
+                            repeat: true,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 450),
+                          child: GradientBorderContainer(
+                            padding: const EdgeInsets.all(
+                              3,
+                            ), // ketebalan border
+                            borderRadius: BorderRadius.circular(16),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 30,
+                                vertical: 40,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.surface,
+                                // border: Border.all(color: AppColor.borderColor, width: 2),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                children: [
+                                  JobBoardTextField(
+                                    hintText: 'Email',
+                                    controller: emailController,
+                                  ),
+                                  const SizedBox(height: 15),
+                                  JobBoardTextField(
+                                    hintText: 'Password',
+                                    controller: passwordController,
+                                  ),
+                                  const SizedBox(height: 20),
+                                  GradientButton(
+                                    onPressed: onPressed,
+                                    label: "Sign In",
+                                  ),
+                                  const SizedBox(height: 20),
+                                  RichText(
+                                    text: TextSpan(
+                                      text: "Don't have an account yet?",
+                                      children: [
+                                        TextSpan(
+                                          text: " Register",
+                                          style: TextStyle(
+                                            color: AppColor.gradient2,
+                                          ),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () {
+                                              context.goNamed("register");
+                                            },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
