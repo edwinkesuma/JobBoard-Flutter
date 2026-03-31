@@ -7,8 +7,9 @@ final class AuthInitial extends AuthState {}
 
 final class AuthLoginSuccess extends AuthState {
   final String message;
+  final UserEntity user;
 
-  AuthLoginSuccess({required this.message});
+  AuthLoginSuccess({required this.message, required this.user});
 }
 
 final class AuthRegisterSuccess extends AuthState {

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:job_board/core/utils/secure_storage_service.dart';
+import 'package:job_board/features/auth/domain/entities/user_entity.dart';
 import 'package:job_board/features/auth/domain/usecases/login_usecase.dart';
 import 'package:job_board/features/auth/domain/usecases/register_usecase.dart';
 import 'package:meta/meta.dart';
@@ -62,7 +63,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         email: r.user.email,
         role: r.user.role,
       );
-      emit(AuthLoginSuccess(message: r.message));
+      emit(AuthLoginSuccess(message: r.message, user: r.user));
     });
   }
 }

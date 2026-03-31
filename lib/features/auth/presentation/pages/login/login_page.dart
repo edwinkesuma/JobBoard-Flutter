@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:job_board/core/utils/responsive_helper.dart';
 import 'package:job_board/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:job_board/features/auth/presentation/pages/login/small_login_page.dart';
@@ -62,7 +61,6 @@ class _LoginPageState extends State<LoginPage> {
             );
           }
           if (state is AuthLoginSuccess) {
-            context.goNamed("home");
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(

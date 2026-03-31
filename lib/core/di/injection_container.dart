@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:job_board/core/network/dio_client.dart';
+import 'package:job_board/core/router/app_router.dart';
 import 'package:job_board/core/utils/secure_storage_service.dart';
 import 'package:job_board/features/auth/data/datasources/remote/auth_remote_datasource.dart';
 import 'package:job_board/features/auth/data/repositories/auth_repository_impl.dart';
@@ -16,6 +17,7 @@ Future<void> init() async {
 
   //============================================================= Authentication
   sl.registerLazySingleton<SecureStorageService>(() => SecureStorageService());
+  sl.registerLazySingleton<AppRouter>(() => AppRouter(sl()));
 
   sl.registerLazySingleton<Dio>(() => dio);
   sl.registerLazySingleton<AuthRemoteDatasource>(
@@ -28,7 +30,7 @@ Future<void> init() async {
     () => RegisterUseCase(repository: sl()),
   );
   sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(repository: sl()));
-  sl.registerFactory<AuthBloc>(
+  sl.registerLazySingleton<AuthBloc>(
     () => AuthBloc(
       registerUseCase: sl(),
       loginUseCase: sl(),

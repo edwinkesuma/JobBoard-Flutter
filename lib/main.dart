@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:job_board/core/di/injection_container.dart' as di;
-import 'package:job_board/core/utils/router.dart';
+import 'package:job_board/core/router/app_router.dart';
 import 'package:job_board/features/auth/presentation/bloc/auth_bloc.dart';
 
 void main() async {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         title: "Job Board",
         debugShowCheckedModeBanner: false,
-        routerConfig: router,
+        routerConfig: di.sl<AppRouter>().router,
         // builder: ,
       ),
     );
