@@ -38,7 +38,7 @@ class RoleButton extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: AppColor.borderColor, width: 2),
+                border: Border.all(color: AppColor.gradient1, width: 2),
               ),
               child: Center(child: Text(label)),
             ),
