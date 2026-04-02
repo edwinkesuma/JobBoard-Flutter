@@ -82,19 +82,22 @@ class LargeRegisterPage extends StatelessWidget {
                               child: Column(
                                 children: [
                                   JobBoardTextField(
-                                    hintText: 'Name',
+                                    label: "Name",
+                                    hintText: "John Doe",
                                     controller: nameController,
                                   ),
                                   const SizedBox(height: 15),
                                   roles,
                                   const SizedBox(height: 15),
                                   JobBoardTextField(
-                                    hintText: 'Email',
+                                    label: "Email",
+                                    hintText: "test@mail.com",
                                     controller: emailController,
                                   ),
                                   const SizedBox(height: 15),
                                   JobBoardTextField(
-                                    hintText: 'Password',
+                                    label: "Password",
+                                    hintText: "********",
                                     controller: passwordController,
                                   ),
                                   const SizedBox(height: 20),

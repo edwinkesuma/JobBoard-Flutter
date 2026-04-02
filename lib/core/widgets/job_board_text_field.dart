@@ -3,12 +3,14 @@ import 'package:job_board/core/constants/app_color.dart';
 
 class JobBoardTextField extends StatelessWidget {
   final String hintText;
+  final String label;
   final TextEditingController controller;
 
   const JobBoardTextField({
     super.key,
     required this.hintText,
     required this.controller,
+    required this.label,
   });
 
   @override
@@ -18,9 +20,16 @@ class JobBoardTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
+          label: Text(label),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: AppColor.gradient3,
+          ),
           contentPadding: const EdgeInsets.all(27),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColor.borderColor, width: 2),
+            borderSide: BorderSide(color: AppColor.gradient1, width: 2),
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
@@ -28,6 +37,7 @@ class JobBoardTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey),
         ),
       ),
     );

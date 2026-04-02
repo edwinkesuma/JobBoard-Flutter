@@ -30,10 +30,15 @@ class SmallLoginPage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
           ),
           const SizedBox(height: 30),
-          JobBoardTextField(hintText: 'Email', controller: emailController),
+          JobBoardTextField(
+            label: "Email",
+            hintText: "test@mail.com",
+            controller: emailController,
+          ),
           const SizedBox(height: 15),
           JobBoardTextField(
-            hintText: 'Password',
+            label: "Password",
+            hintText: '********',
             controller: passwordController,
           ),
           const SizedBox(height: 20),
